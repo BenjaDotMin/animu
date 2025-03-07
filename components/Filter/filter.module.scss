@@ -1,0 +1,10 @@
+.filter{margin-bottom: 22px; padding: 0 20px; gap:var(--gap-sm); position: relative; animation: mask 1s both; animation-timeline: scroll(); animation-range: 2px 30px; animation-timing-function: linear;
+    li{gap:6px; border:1px solid var(--white); border-radius: 20px; padding: 7px 12px; font-size: 1.2rem; color:var(--white); display: flex; align-items: center;
+        &:last-of-type{padding-right: 12px;}
+    }
+}
+
+@keyframes mask {
+    from{clip-path: rect(0% 100% 100% 0px);}
+    to{clip-path: rect(100% 100% 100% 0px);}
+}

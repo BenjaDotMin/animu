@@ -1,0 +1,28 @@
+.hero{background: linear-gradient(180deg, rgba(40,100,90,1) 0%, rgba(25,21,20,1) 100%); height: 82vh; height:82svh; padding: 56px 0 0; animation: fade 1s both; animation-timeline: scroll(); animation-range: 0px 110vh;} 
+
+.swiper{padding:0 20px; height: calc(100% - 65px); transform-origin: bottom; animation: scaler 1s both; animation-timeline: scroll(); animation-range: 0px 110vh;
+    div{height: 100%;
+        a{&>img{height: 100%; width: 100%;}}
+    }
+}
+
+.swiperSlide{position: relative; width: 100%; border: 1px solid white; border-radius: 12px; overflow: hidden; }
+
+.slideContent{position: absolute; inset:0; z-index: 2; display: grid; align-content: end; 
+    h2{letter-spacing: 0.18rem;}
+    label{background-color: var(--green); font-size: 1.2rem; color:white; border-radius: 20px; padding:10px 15px}
+}
+
+.titles{position: relative; display: grid; justify-items: start; gap:14px; padding: 20px;
+    &:after{content:""; position: absolute; bottom:0; left:0; right:0; top:-100px; background: linear-gradient(0deg, rgba(3, 3, 3, 0.95), rgb(25 21 20 / 0%)); z-index: -1;}
+}
+
+@keyframes fade {
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+@keyframes scaler {
+    from{scale: 1;}
+    to{scale: 0.94;}
+}

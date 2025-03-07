@@ -1,0 +1,349 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+@view-transition{navigation:auto;}
+
+:root {   
+
+  --container-padding: 0 clamp(2rem, 6vw, 6rem);
+  /* //1440 + 120px (6rem * 2); */
+  --site-max-width: 1560px;
+  
+    /* PRIMITIVES */
+  --padding-sm: 15px;
+  --padding-md: 25px;
+  --padding-lg: 35px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --background: #ffffff;
+  --foreground: #171717;
+
+
+  /* colors */
+  --black: #191514;  
+  --white: #fff;  
+  --green: #26897A;
+  --red: #CC1717;
+  --yellow: #8d871d;
+  
+
+  /* //font families */
+  --ff-body: "roboto", sans-serif;  
+  --ff-heading: "poppins", sans-serif;  
+  --ff-sub-heading: "poppins", sans-serif;  
+
+  /* //font sizes  */
+  --fs-14: clamp(1.4rem, 1.4vw, 1.4rem);
+  --fs-16: clamp(1.6rem, 1.6vw, 1.6rem); 
+  --fs-18: clamp(2rem, 2vw, 2rem);
+  --fs-24: clamp(2.4rem, 2.4vw, 2.4rem);
+  --fs-30: clamp(2.6rem, 3vw, 3rem);
+
+  /* //font weights */
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+  --fw-800: 800;
+
+   /* //gaps */
+  --gap-sm: 12px;
+
+
+  /* //NAMED PRIMITIVES */
+  /* //try not to use "primitive" string values above, set them to something recognisable like below */
+  
+  /* //font-sizes    */
+  --fs-sm: var(--fs-14);
+  --fs-rg: var(--fs-16); 
+  --fs-md: var(--fs-18);
+  --fs-lg: var(--fs-24);
+  --fs-xl: var(--fs-30);
+  /* //add more with -heading if that makes sense */
+  
+  /* //font-weights */
+  --fw-lt: var(--fw-300); 
+  --fw-rg: var(--fw-400);
+  --fw-md: var(--fw-500);
+  --fw-bd: var(--fw-700);
+  --fw-xb: var(--fw-800);
+
+
+
+  /* NAMED PRIMITIVES
+  try not to use "primitive" string values above, set them to something recognisable like below */
+
+  /* brand colours */
+  --brand-primary: var(--red-300);
+  /* why not just have "red" in here? answer: because people like to not use primitive strings in "named" recognisable rules */
+  --brand-secondary: var(--red-400); 
+  --brand-tertiary: var(--red-500);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+
+
+
+/* RESETS */
+/* [v-cloak]{display: none;}  */
+
+*{box-sizing: border-box;}
+
+html{font-size: 62.5%; line-height: 1; overflow-y: scroll; font-family: var(--ff-body);}
+
+body{margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: var(--black); background-color: var(--black);
+    &.lock{position: fixed; width: 100%;} 
+}
+
+h1, h2, h3, h4, h5, h6{margin: 0; letter-spacing: 0.1rem;
+    /* //using props instead of classes:
+    font-family: var(--font-heading);
+    color: var(--brand-secondary); */
+} 
+
+button, input, textarea, select{font-family:inherit; -moz-appearance: none; -webkit-appearance: none; appearance: none;
+    &:focus-visible{outline:none;}
+}
+
+a{text-decoration: underline;}
+
+ul{margin: 0; padding: 0;
+    li{list-style: none;}
+}
+
+p{margin: 0;
+    a{color: var(--blue);}
+}
+
+p, a{font-size: var(--fs-16);} 
+
+img{min-width: 1px; height: auto; object-fit: cover;}  
+img, picture, video, canvas, svg {display: block; max-width: 100%;}
+  
+/* prevent mobile highlights on click */
+div{-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-tap-highlight-color: transparent;}
+
+
+
+
+
+/* CLASSES */
+
+/* background classes */
+.black-bg{background-color: var(--black);}
+.white-bg{background-color: var(--white);}
+.grey-bg{background-color: var(--grey-400);}
+.dark-grey-bg{background-color: var(--grey-500);}
+/* //using the renamed value (not primitive value) */
+.red-bg{background-color: var(--brand-secondary);} 
+.purple-bg{background-color: var(--purple);}
+.green-bg{background-color: var(--green);}
+.blue-bg{background-color: var(--blue);}
+
+/* color classes */
+.black-text{color: var(--black);}
+.white-text{color: var(--white);}
+.grey-text{color: var(--grey-400);}
+.dark-grey-text{color: var(--grey-500);}
+.red-text{color: var(--brand-secondary);}
+.purple-text{color: var(--purple);}
+.green-text{color: var(--green);}
+.blue-text{color: var(--blue);}
+
+/* font classes */
+/* //DONT LOCK HEADER TAGS TO SIZES, USE CLASSES LIKE THIS TO STYLE THEM AS NEEDED
+//font size classes */
+.fs-sm{font-size: var(--fs-sm);}
+.fs-rg{font-size: var(--fs-rg);}
+.fs-md{font-size: var(--fs-md);}
+.fs-lg{font-size: var(--fs-lg);} 
+.fs-xl{font-size: var(--fs-xl); line-height: 1.2; font-weight: var(--fw-md);} 
+
+/* //font weight classes */
+.fw-lt{font-weight: var(--fw-lt);}
+.fw-rg{font-weight: var(--fw-rg);}
+.fw-md{font-weight: var(--fw-md);}
+.fw-bd{font-weight: var(--fw-bd);}
+.fw-xb{font-weight: var(--fw-xb);}
+
+/* //font families classes */
+.ff-body{font-family: var(--ff-body);}
+.ff-heading{font-family: var(--ff-heading)}
+.ff-sub-heading{font-family: var(--ff-sub-heading);} 
+
+.text-center{text-align: center;}
+
+.uppercase{text-transform: uppercase; -moz-font-feature-settings: "lnum"; -webkit-font-feature-settings: "lnum"; font-feature-settings: "lnum";}
+
+.split{display: inline-flex; flex-wrap: wrap; gap: 0 8px;
+    .word{display: inline-flex; gap:0; overflow: hidden; transform: translateZ(0); backface-visibility: hidden; will-change: transform;
+        .letter{transform: translateZ(0); backface-visibility: hidden; will-change: transform;}
+    }
+}
+
+/* //.bold{font-weight: 700;} //use b tags  */
+
+/* layout helpers */
+.hide-scroll{-ms-overflow-style: none; scrollbar-width: none; &::-webkit-scrollbar{display: none;}}
+
+.scrollbar-wrapper{padding: 10px 10px 10px 0px; height:100%;
+    &>div{position:relative; height: 100%; overflow: auto;
+        &::-webkit-scrollbar{width: 8px;}
+        &::-webkit-scrollbar-track{border-radius: var(--radius-md); background-color: rgba(black, 0.07); margin: 0 0;}
+        &::-webkit-scrollbar-thumb{border-radius: var(--radius-md); background-color: grey;}        
+    }   
+}
+
+/* //fill space */
+.fill{width:100%; height:100%; object-fit:cover;}
+.fill-height{height: 100vh; height: 100dvh;}
+.full-video{
+    iframe{height: auto; width: 100%; aspect-ratio: 16 / 9;}
+} 
+.cover{background-size: cover; object-fit: cover;}
+
+/* //border radius */
+.br-sm{border-radius: var(--radius-sm);}
+.br-md{border-radius: var(--radius-md);}
+.br-lg{border-radius: var(--radius-lg);} 
+
+/* //padding */
+.p-sm{padding:var(--padding-sm);}
+.p-md{padding:var(--padding-md);}
+.p-lg{padding:var(--padding-lg);}
+
+/* //flow */
+.flow > :not(:first-child){margin-top: 1em;} 
+.grid-flow > :not(:first-child){margin-top: 1rem;}
+
+/* //alignment */
+.flex{display: flex;}
+.grid{display: grid;}
+.center{align-items: center; justify-content: center;}
+.v-center{align-items: center;}
+.h-center{justify-content: center; justify-items: center;}
+.v-start{align-items: start; align-items: flex-start;}
+.v-end{align-items: end; align-items: flex-end;}
+.h-start{justify-content: start; justify-content: flex-start;}
+.h-end{justify-content:end; justify-content: flex-end;}
+.sb{justify-content: space-between;}
+
+/* //misc */
+.shadow{box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.0951141);}
+.pointer{cursor: pointer;}
+.rel{position: relative;}
+.abs{position: absolute;}
+
+/* //section */
+.section{padding: 70px 0;
+    /* //locally scope props */
+    /* //set prop */
+    --padding: 0 40px;
+    /* //use prop */
+    padding: var(--padding);
+    /* //using data-attr lets us nest in *vanilla* css (classes like "&--wide" do not): */
+    /* //change the *value* of --padding prop (rather than replacing it with another padding *rule* */
+    &[data-padding="compact"]{--padding: 0 20px;} 
+}
+
+/* //line cap */
+/* .text-clamp{@include u.textClamp();} */
+
+/* //page-transition */
+.page-transition{position: fixed; top:0; right:0; bottom: 0; left:0; background-color: var(--green); z-index: 9999; transform: scaleY(0); transform-origin: top; pointer-events: none;}
+
+.container{padding: var(--container-padding); max-width: var(--site-max-width); width: 100%; margin: 0 auto; position: relative; 
+   /* //locally scope props */
+   /* //--max-width: 0 40px; //set prop
+   //max-width: var(--max-width); //use prop
+   //using data-attr lets us nest in *vanilla* css (classes like "&--wide" do not):
+   //&[data-width="wide"]{--max-width: 1600px;} //change the *value* of --max-width prop (rather than replacing it with another max-width *rule*
+   //&[data-justify="center"]{text-align: center;} //center text */
+  
+   &.large{--site-max-width:1320px;} 
+   &.medium{--site-max-width:1218px;}
+   &.small{--site-max-width:1110px;}
+   &.x-small{--site-max-width:1000px;}
+   &.xx-small{--site-max-width:845px;}        
+   &.hero{--container-padding: 0 0;}
+   /* //if static values are needed: */
+   /* // @media (max-width: 860px){--container-padding: 0 40px;}
+   // @media (max-width: 620px){--container-padding: 0 30px;}
+   // @media (max-width: 374px){--container-padding: 0 20px;}       */
+}    
+
+/* checkboxes and radios */
+.checkboxes{
+  .checkbox{position:relative; display:flex; align-items:center; gap:9px 9px; padding-right: 24px;
+      input[type="checkbox"]{position: absolute; top:0; right:0; bottom:0; left:0; margin:0; opacity:0; cursor:pointer; height: 100%; width: 100%; max-width: 24px; 
+          &:checked{
+            &+.checkbox-box{background-size: 12px; border: 1px solid var(--black);
+                /* background: url("../Images/tick-white.svg") no-repeat center var(--black);  */
+            }
+          }
+          &.error{
+              &+.checkbox-box{border-color: var(--red-400); background-color: var(--red-300);}
+          }                                    
+      } 
+      .checkbox-box{border: 1px solid var(--grey-500); height: 24px; flex: 0 0 24px; transition: border-color 0.2s, background-color 0.2s ease-out;}
+      label{cursor: pointer; line-height: 130%; white-space: nowrap;}           
+  }
+}
+
+.radios{
+  .radio{position: relative; display: flex; align-items: center; gap:14px 14px;
+      input[type="radio"]{position: absolute; top:0; right:0; bottom:0; left:0; opacity: 0; cursor: pointer; margin:0; height: auto; max-width: 24px; 
+          &:checked{
+              &+.radio-box{
+                  &:after{background-color: var(--black);}
+              }
+          }
+      }
+      .radio-box{height: 24px; width: 24px; border-radius: 100%; border: 1px solid var(--grey-400); background-color: var(--white); display: flex; align-items: center; justify-content: center;
+          &:after{content: ""; height: 12px; width: 12px; background-color: var(--white); border-radius: 100%; transition: border-color 0.2s, background-color 0.2s ease-out;}
+      }
+      label{margin-bottom: 0 !important; cursor: pointer; line-height: 130%; white-space: nowrap;}
+  }
+}    
+
+/* //form */
+/* %formSpacing{margin-bottom: 25px;}
+.single-label, .checkboxes, .radios{@extend %formSpacing;}  */
+.form-inputs{display: flex; flex-wrap: wrap; gap:20px; 
+  .form-input{flex:1; scroll-margin: 200px; 
+      select, input, textarea{
+        /* //@extend .fs14; */
+        background-color: var(--white); border: 1px solid #EEEEEE; align-items: center; justify-content: center; padding: 0 24px; font-weight: var(--fw-400);}
+        select{text-overflow: ellipsis; overflow: hidden; white-space: nowrap;  width: 100%; cursor: pointer; padding-right: 40px; line-height: 110%;
+        /* background: url("../Images/chevron-down-rounded.svg") no-repeat center right 21px var(--white); */
+      }
+      label{display: inline-block;
+          &.required{position: relative;
+              &::after{content:"*"; position: absolute; top:0; right:-8px;}
+          }
+      }
+      input, select{height: 54px; border: 1px solid var(--black); margin-top: 5px; width: 100%;}
+      input{@include u.placeholder(){font-size:1.8rem; color: var(--grey-400);}  
+          &[type="number"]{-moz-appearance: textfield;
+              &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}
+          }       
+          &:focus{outline:none;}                 
+      }   
+      textarea{font-family: "roboto", sans-serif; padding: 16px; resize: none; width: 100%;}
+      span{
+          &.error{display: block; margin-top: 5px; font-size: 1.4rem; color:var(--red-400);}
+      }
+      &.has-error{
+          input, select{border-color: var(--red-400);}
+      }
+  }
+  /* &:not(&:last-child){@extend %formSpacing;} */
+}

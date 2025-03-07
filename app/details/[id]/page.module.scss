@@ -1,0 +1,22 @@
+.detail{
+   
+}
+
+.hero{view-transition-name: toHero; position: relative; max-height: 410px; overflow: hidden; margin-bottom: 8px;
+    img{position: relative; width: 100%; object-fit: cover; }
+    &:after{content: ""; position: absolute; top:0; left:0; right:0; height: 79px; background: linear-gradient(180deg, rgba(25,21,20,70%) 0%, rgba(25,21,20,0) 100%);}
+}
+
+.heroContent{position: absolute; inset: 0; z-index: 2; display: grid; align-content: end;}
+
+.titles{position: relative; display: grid; justify-items: start; gap:14px; padding: 20px;
+    &:after{content:""; position: absolute; bottom:0; left:0; right:0; top:-80px; background: linear-gradient(0deg, rgb(25 21 20 /1), rgb(25 21 20 / 0%)); z-index: -1;}
+}
+
+.container{
+    p{margin-top: 10px; line-height: 1.4; position: relative; margin-bottom: 28px;
+
+        height: 93px; overflow: hidden;
+        &:after{content:""; position: absolute; bottom:0; left:0; right:0; height:85%; background: linear-gradient(0deg, rgb(25 21 20 /1), rgb(25 21 20 / 0%));}
+    }
+}

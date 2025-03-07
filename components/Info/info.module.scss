@@ -1,0 +1,6 @@
+.info{gap:18px;
+  li{font-size: 1.2rem; color:white; display: flex; align-items: center; flex-shrink: 0; gap:2px;
+    &:last-of-type{height: 22px; width: 22px; display: grid; place-items: center; border-radius: 100%; font-size: 1rem;}
+  }
+  img{width: 18px; translate: 0px -2px;}
+}
