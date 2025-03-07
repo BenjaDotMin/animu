@@ -77,7 +77,9 @@ export default async function Home() {
     testLong.push(apiCall(feature, 10, i));
   });
   await Promise.all(testLong).then(values => featuredAnimeLong = values);
-  console.log(featuredAnimeLong);
+  //console.log(featuredAnimeLong);
+
+ 
 
   //optional for images
   // const imageLoader = ({ src, width, quality }) => {
@@ -93,15 +95,8 @@ export default async function Home() {
     <div className="page">
 
       <Hero items={featuredAnime}></Hero>
-     
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-      <Carousel title="Popular" items={popularAnime}></Carousel>
-  
+
+      {featuredAnimeLong.map((list, i) => <Carousel key={i} title="Popular" items={list}></Carousel>)}
 
       {/* IMAGES */}
       {/* use next image for performance */}

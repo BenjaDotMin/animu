@@ -9,8 +9,8 @@ const Carousel = ({items, title}) => {
     <Swiper className={styles.swiper}
       spaceBetween={12}
       slidesPerView={2.5}>
-      {items.map(item => 
-        <SwiperSlide className={styles.swiperSlide} key={item.mal_id}><img src={item.images.webp.image_url}/></SwiperSlide>
+      {items.map((item, i) => 
+        <SwiperSlide className={styles.swiperSlide} key={i}><img src={item.images.webp.image_url}/></SwiperSlide>
       )}
     </Swiper>
   </div>

@@ -99,7 +99,7 @@
 
 html{font-size: 62.5%; line-height: 1; overflow-y: scroll; font-family: var(--ff-body);}
 
-body{margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: var(--black); background-color: var(--black);
+body{margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: var(--black); background-color: var(--black); padding-bottom: 80px;
     &.lock{position: fixed; width: 100%;} 
 }
 
