@@ -18,7 +18,7 @@ const Hero = ({items}) => {
             <img src={item[0].images.webp.large_image_url} alt="" />
             <div className={styles.slideContent}>           
               <div className={styles.titles}>
-                <label>{featureLabels[i]}</label>
+                <label>#1 in {featureLabels[i]}</label>
                 <h2 className="fs-lg ff-heading uppercase white-text">{item[0].title_english || item[0].title}</h2>
                 <Genres genres={item[0].genres}></Genres>
                 <Info score={item[0].score} episodes={item[0].episodes} rating={item[0].rating}></Info>

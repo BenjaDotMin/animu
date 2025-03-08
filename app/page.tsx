@@ -30,49 +30,25 @@ export default async function Home() {
   const API_URL = 'https://api.jikan.moe/v4';
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  const getPopularAnime = () => {
-    const popularAnime = fetch(`${API_URL}/top/anime?limit=10`).then(res => res.json()).then(data => data.data);
-    return popularAnime;
-  }
-  const popularAnime = await getPopularAnime();
-
-  // const getPopularUpcomingAnime = async () => {
-  //   await delay(2000);
-  //   const popularUpcomingAnime = fetch(`${API_URL}/top/anime?limit=10`).then(res => res.json()).then(data => data.data);
-  //   return popularUpcomingAnime;
-  // }
-
-  // const popularUpcomingAnime = await getPopularUpcomingAnime();
-  // console.log(popularUpcomingAnime);
-
-
-
-
-
   const featureList = ["favorite", "upcoming", "bypopularity", "airing"];
-  let test = [];
-  let testLong = [];
-  let featuredAnime = [];
-  let featuredAnimeLong = [];
-  
+  const popularCarousel = ["Most favourited", "Popular upcoming", "Popular anime", "Popular airing", "Popular completed"];
+
   const apiCall = async (feature, limit, i) => {
     await delay(i*1000);
     const result = fetch(`${API_URL}/top/anime?filter=${feature}&limit=${limit}`).then(res => res.json()).then(data => data.data);
     return result;
   }
 
+  let test = [];
+  let featuredAnime = [];
   featureList.map((feature, i) => {
    test.push(apiCall(feature, 1, i));
   });
   await Promise.all(test).then(values => featuredAnime = values);
   //console.log(featuredAnime);
 
-
-
-
-
-
-
+  let testLong = [];
+  let featuredAnimeLong = [];
   featureList.map((feature, i) => {
     testLong.push(apiCall(feature, 10, i));
   });
@@ -96,7 +72,7 @@ export default async function Home() {
 
       <Hero items={featuredAnime}></Hero>
 
-      {featuredAnimeLong.map((list, i) => <Carousel key={i} title="Popular" items={list}></Carousel>)}
+      {featuredAnimeLong.map((list, i) => <Carousel key={i} title={popularCarousel[i]} items={list}></Carousel>)}
 
       {/* IMAGES */}
       {/* use next image for performance */}
