@@ -1,0 +1,11 @@
+.synopsis{display: grid; grid-template-rows: 0fr; transition: 0.3s ease-out; 
+    p{min-height: 93px; overflow: hidden; margin-top: 10px; line-height: 1.4; position: relative; margin-bottom: 28px;
+        &:after{content:""; position: absolute; bottom:0; left:0; right:0; height:85%; background: linear-gradient(0deg, rgb(25 21 20 /1), rgb(25 21 20 / 0%));}
+    }   
+}
+
+.open{grid-template-rows: 1fr;
+    p{
+        &::after{content: none;}
+    }
+}

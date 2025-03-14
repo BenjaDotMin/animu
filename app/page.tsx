@@ -33,16 +33,16 @@ export default async function Home() {
   const featureList = ["favorite", "upcoming", "bypopularity", "airing"];
   const popularCarousel = ["Most favourited", "Popular upcoming", "Popular anime", "Popular airing", "Popular completed"];
 
-  const apiCall = async (feature, limit, i) => {
+  const apiCall = async (url, type, feature, status, limit, i) => {
     await delay(i*1000);
-    const result = fetch(`${API_URL}/top/anime?filter=${feature}&limit=${limit}`).then(res => res.json()).then(data => data.data);
+    const result = fetch(`${API_URL}${url}?type=${type}&filter=${feature}&status=${status}&limit=${limit}`).then(res => res.json()).then(data => data.data);
     return result;
   }
 
   let test = [];
   let featuredAnime = [];
   featureList.map((feature, i) => {
-   test.push(apiCall(feature, 1, i));
+   test.push(apiCall("/top/anime", "", feature, "", 1, i));
   });
   await Promise.all(test).then(values => featuredAnime = values);
   //console.log(featuredAnime);
@@ -50,12 +50,22 @@ export default async function Home() {
   let testLong = [];
   let featuredAnimeLong = [];
   featureList.map((feature, i) => {
-    testLong.push(apiCall(feature, 10, i));
+    testLong.push(apiCall("/top/anime", "", feature, "", 10, i));
   });
   await Promise.all(testLong).then(values => featuredAnimeLong = values);
   //console.log(featuredAnimeLong);
 
- 
+  let topMovies = await apiCall("/top/anime", "movie", "", "", 10, 1);
+  //console.log(topMovies);
+
+  let topCharacters = await apiCall("/top/characters", "", "", "", 10, 1);
+  //console.log(topCharacters);
+
+  let topCompleted = await apiCall("/anime", "", "", "complete", 10, 1);
+  //console.log(topCompleted);
+
+  let animeRecentRecommendations = await apiCall("/recommendations/anime", "", "", "", 10, 1);
+  //console.log(animeRecentRecommendations);
 
   //optional for images
   // const imageLoader = ({ src, width, quality }) => {
@@ -73,6 +83,12 @@ export default async function Home() {
       <Hero items={featuredAnime}></Hero>
 
       {featuredAnimeLong.map((list, i) => <Carousel key={i} title={popularCarousel[i]} items={list}></Carousel>)}
+
+      <Carousel title="Popular movies" items={topMovies}></Carousel>
+      <Carousel title="Popular completed" items={topCompleted}></Carousel>
+      <Carousel title="Popular characters" items={topCharacters}></Carousel>
+      
+      <Carousel title="Recent Recommendations" items={animeRecentRecommendations}></Carousel>
 
       {/* IMAGES */}
       {/* use next image for performance */}
